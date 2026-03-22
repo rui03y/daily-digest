@@ -3,35 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 效率日报 - 2026-03-22</title>
+    <title>AI 效率日报</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             background: #f5f5f0;
             color: #1a1a1a;
-            line-height: 1.7;
+            display: flex;
+            height: 100vh;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 60px 30px; }
-        header { 
-            text-align: center; 
-            margin-bottom: 50px;
-            padding-bottom: 25px;
-            border-bottom: 2px solid #e0e0d8;
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #e0e0d8;
+            overflow-y: auto;
+            padding: 30px 20px;
+        }
+        .sidebar h2 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #2d2d2d;
+        }
+        .date-list {
+            list-style: none;
+        }
+        .date-item {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .date-item:hover {
+            background: #f5f5f0;
+        }
+        .date-item.active {
+            background: #c17d4a;
+            color: white;
+        }
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 60px 40px;
+        }
+        .report {
+            max-width: 800px;
+            margin: 0 auto;
         }
         h1 { 
             font-size: 2.5em; 
             margin-bottom: 10px; 
             color: #2d2d2d;
-            font-weight: 600;
         }
-        .date { font-size: 1em; color: #666; }
-        .section { margin-bottom: 45px; }
+        .date { font-size: 1em; color: #666; margin-bottom: 40px; }
+        .section { margin-bottom: 40px; }
         h2 { 
             font-size: 1.6em; 
-            margin-bottom: 25px; 
+            margin-bottom: 20px; 
             color: #2d2d2d;
-            font-weight: 600;
             padding-left: 12px;
             border-left: 4px solid #c17d4a;
         }
@@ -42,114 +72,86 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        .item h3 { 
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #2d2d2d;
-            font-weight: 600;
-        }
-        .item .subtitle { 
-            font-size: 0.95em;
-            color: #888;
-            margin-bottom: 12px;
-        }
-        .item p { 
-            font-size: 1em;
-            color: #4a4a4a;
-            margin-bottom: 10px;
-        }
-        .meta { 
-            font-size: 0.9em;
-            color: #888;
-            margin-top: 10px;
-        }
-        .link { 
-            color: #c17d4a;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .link:hover { color: #a06638; }
-        .action-box {
-            background: #fff8f0;
-            border-left: 4px solid #c17d4a;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 4px;
-        }
-        footer { 
-            text-align: center;
-            margin-top: 50px;
-            padding-top: 25px;
-            border-top: 2px solid #e0e0d8;
-            color: #888;
+        .item h3 { font-size: 1.3em; margin-bottom: 10px; color: #2d2d2d; }
+        .item p { font-size: 1em; color: #4a4a4a; margin-bottom: 10px; }
+        .link { color: #c17d4a; text-decoration: none; }
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e0e0d8; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="sidebar">
+        <h2>📅 日报归档</h2>
+        <ul class="date-list">
+            <li class="date-item active" onclick="loadReport('2026-03-22')">2026-03-22</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="report" id="report-content">
             <h1>📅 AI 效率日报</h1>
             <div class="date">2026-03-22 | 反炒作 · 只看实用</div>
-        </header>
-        <section class="section">
-            <h2>🚨 核心关注（S级）</h2>
-            
-            <div class="item">
-                <h3>未发现 S 级重大更新</h3>
-                <p>过去 24 小时内未检测到基座模型级别的重大技术突破或立即可用的革命性工具。</p>
-                <div class="meta">数据来源：GitHub Trending、官方博客扫描</div>
-            </div>
-        </section>
 
-        <section class="section">
-            <h2>🛠 工具箱更新（B级）</h2>
-            
-            <div class="item">
-                <h3>Andrej Karpathy 播客问答</h3>
-                <div class="subtitle">对你的价值：了解 AI 训练和深度学习的一线见解</div>
-                <p><strong>场景：</strong>想深入理解 AI 训练流程、模型优化时收听</p>
-                <div class="meta">
-                    来源可靠性：S（@karpathy 官方） | 
-                    <a href="https://x.com/karpathy/status/2035158351357911527" target="_blank" class="link">查看原文 →</a>
+            <section class="section">
+                <h2>🚨 核心关注（S级）</h2>
+                <div class="item">
+                    <h3>未发现 S 级重大更新</h3>
+                    <p>过去 24 小时内未检测到基座模型级别的重大技术突破或立即可用的革命性工具。</p>
                 </div>
-            </div>
-            <div class="item">
-                <h3>Swyx AI 预测回顾</h3>
-                <div class="subtitle">对你的价值：参考成功预测者的思维框架</div>
-                <p><strong>场景：</strong>制定 AI 技术选型和学习路线时参考</p>
-                <div class="meta">
-                    来源可靠性：A（知名 AI 博主） | 
-                    <a href="https://x.com/swyx/status/2034893748916953450" target="_blank" class="link">查看原文 →</a>
+            </section>
+            <section class="section">
+                <h2>🛠 工具箱更新（B级）</h2>
+                <div class="item">
+                    <h3>Andrej Karpathy 播客问答</h3>
+                    <p><strong>对你的价值：</strong>了解 AI 训练和深度学习的一线见解</p>
+                    <p><a href="https://x.com/karpathy/status/2035158351357911527" target="_blank" class="link">查看原文 →</a></p>
                 </div>
-            </div>
-        </section>
-        <section class="section">
-            <h2>📉 行业降噪（C级）</h2>
-            <div class="item">
-                <p>• 多个 AI 融资新闻（纯资本动态，无产品发布）</p>
-                <p>• 各类 AI 概念讨论（无实际工具产出）</p>
-            </div>
-        </section>
+                <div class="item">
+                    <h3>Swyx AI 预测回顾</h3>
+                    <p><strong>对你的价值：</strong>参考成功预测者的思维框架</p>
+                    <p><a href="https://x.com/swyx/status/2034893748916953450" target="_blank" class="link">查看原文 →</a></p>
+                </div>
+            </section>
+            <section class="section">
+                <h2>📉 行业降噪（C级）</h2>
+                <div class="item">
+                    <p>• 多个 AI 融资新闻（纯资本动态，无产品发布）</p>
+                    <p>• 各类 AI 概念讨论（无实际工具产出）</p>
+                </div>
+            </section>
 
-        <div class="action-box">
-            <h3>✅ 今日行动建议</h3>
-            <ol>
-                <li>收听 Karpathy 播客，了解 AI 训练实践经验</li>
-                <li>阅读 Swyx 的预测回顾，校准自己的技术判断</li>
-                <li>继续关注 GitHub Trending，等待下一个 S 级工具出现</li>
-            </ol>
+            <section class="section">
+                <h2>✅ 今日行动建议</h2>
+                <div class="item">
+                    <ol>
+                        <li>收听 Karpathy 播客，了解 AI 训练实践经验</li>
+                        <li>阅读 Swyx 的预测回顾，校准自己的技术判断</li>
+                        <li>继续关注 GitHub Trending，等待下一个 S 级工具出现</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>💡 Insight</h2>
+                <div class="item">
+                    <p>今日平静期：无重大技术突破。适合消化已有工具，优化现有工作流。避免被营销噪音干扰，专注实际产出。</p>
+                </div>
+            </section>
         </div>
-
-        <section class="section">
-            <h2>💡 Insight</h2>
-            <div class="item">
-                <p>今日平静期：无重大技术突破。适合消化已有工具，优化现有工作流。避免被营销噪音干扰，专注实际产出。</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>专属 AI 情报官 · 反炒作 / Anti-hype</p>
-        </footer>
     </div>
+    <script>
+        function loadReport(date) {
+            // 更新侧边栏选中状态
+            document.querySelectorAll('.date-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 这里可以加载不同日期的报告
+            // 目前只有一个日期，未来可以扩展
+        }
+    </script>
 </body>
 </html>
