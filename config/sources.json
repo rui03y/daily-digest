@@ -1,0 +1,17 @@
+{
+  "ai": {
+    "keywords": ["AI", "LLM", "GPT", "Claude", "机器学习", "深度学习", "OpenAI", "Anthropic"],
+    "sources": [
+      "https://news.ycombinator.com/",
+      "https://www.reddit.com/r/MachineLearning/",
+      "https://techcrunch.com/category/artificial-intelligence/"
+    ]
+  },
+  "adtech": {
+    "keywords": ["广告", "投放", "AppsFlyer", "Google Ads", "Facebook Ads", "TikTok Ads", "UA", "用户增长"],
+    "sources": [
+      "https://www.adexchanger.com/",
+      "https://martech.org/"
+    ]
+  }
+}
