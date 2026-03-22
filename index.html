@@ -8,98 +8,148 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            overflow-x: hidden;
-            background: #0a0a0a;
-            color: white;
+            background: #f5f5f0;
+            color: #1a1a1a;
+            line-height: 1.6;
         }
-        .slide {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 40px;
-            position: relative;
-            scroll-snap-align: start;
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 30px; }
+        header { 
+            text-align: center; 
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #e0e0d8;
         }
-        .slide:nth-child(odd) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .slide:nth-child(even) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .content { max-width: 1000px; width: 100%; animation: fadeIn 1s ease-in; }
-        h1 { font-size: 4em; margin-bottom: 30px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); }
-        h2 { font-size: 2.8em; margin-bottom: 25px; }
-        .subtitle { font-size: 1.8em; opacity: 0.9; margin-bottom: 20px; }
+        h1 { 
+            font-size: 3em; 
+            margin-bottom: 15px; 
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        .date { 
+            font-size: 1.1em; 
+            color: #666;
+            font-weight: 400;
+        }
+        .section { margin-bottom: 50px; }
+        h2 { 
+            font-size: 1.8em; 
+            margin-bottom: 30px; 
+            color: #2d2d2d;
+            font-weight: 600;
+            padding-left: 15px;
+            border-left: 4px solid #c17d4a;
+        }
         .item { 
-            background: rgba(255,255,255,0.15); 
-            padding: 35px; 
-            margin: 25px 0; 
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(255,255,255,0.25);
-            transition: transform 0.3s;
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: box-shadow 0.3s;
         }
-        .item:hover { transform: translateY(-5px); }
-        .item h3 { font-size: 2em; margin-bottom: 18px; }
-        .item p { font-size: 1.3em; line-height: 1.8; opacity: 0.95; }
-        .meta { font-size: 1em; margin-top: 15px; opacity: 0.8; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        .item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .item h3 { 
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            color: #2d2d2d;
+            font-weight: 600;
+        }
+        .item p { 
+            font-size: 1.05em;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+        }
+        .meta { 
+            font-size: 0.95em;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .link { 
+            color: #c17d4a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .link:hover { color: #a06638; }
+        footer { 
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0d8;
+            color: #888;
         }
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
-            .slide { padding: 40px 20px; }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.5em; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="slide">
-        <div class="content" style="text-align: center;">
-            <h1>🚀 AI & AdTech 日报</h1>
-            <div class="subtitle">2026年3月22日 星期六</div>
-        </div>
-    </div>
+    <div class="container">
+        <header>
+            <h1>AI & AdTech 日报</h1>
+            <div class="date">2026年3月22日 星期六</div>
+        </header>
 
-    <div class="slide">
-        <div class="content">
+        <section class="section">
             <h2>🤖 AI 资讯</h2>
+            
             <div class="item">
                 <h3>Andrej Karpathy 播客问答</h3>
                 <p>前 Tesla AI 总监、OpenAI 创始团队成员 Andrej Karpathy 参加播客访谈，并在 Twitter 上开放问答环节，分享 AI 训练和深度学习的见解。</p>
-                <div class="meta">@karpathy · 2026-03-21 · 2K+ 点赞</div>
+                <div class="meta">
+                    <span>@karpathy · 2026-03-21 · 2K+ 点赞</span>
+                    <a href="https://x.com/karpathy/status/2035158351357911527" target="_blank" class="link">查看原文 →</a>
+                </div>
             </div>
+
             <div class="item">
                 <h3>Swyx 回顾 2023 年 AI 预测</h3>
                 <p>AI 领域知名博主 Swyx 回顾了 2.5 年前的演讲，认为 2023 年是他预测价值最高的一年，当时对 AI 发展趋势的判断非常准确。</p>
-                <div class="meta">@swyx · 2026-03-20 · 69 点赞</div>
+                <div class="meta">
+                    <span>@swyx · 2026-03-20 · 69 点赞</span>
+                    <a href="https://x.com/swyx/status/2034893748916953450" target="_blank" class="link">查看原文 →</a>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="content">
+        </section>
+        <section class="section">
             <h2>📊 AdTech 资讯</h2>
+            
             <div class="item">
                 <h3>Google Ads AI 优化持续升级</h3>
                 <p>Google Ads 继续推进 AI 驱动的广告优化功能，帮助广告主更精准地触达目标用户，提升投放效率。</p>
-                <div class="meta">来源: Google Ads 官方</div>
+                <div class="meta">
+                    <span>来源: Google Ads 官方</span>
+                    <a href="https://ads.google.com" target="_blank" class="link">了解更多 →</a>
+                </div>
             </div>
+
             <div class="item">
                 <h3>Meta 广告平台更新归因模型</h3>
                 <p>Meta 更新了跨设备归因追踪能力，帮助广告主更准确地衡量广告效果和 ROI。</p>
-                <div class="meta">来源: Meta for Business</div>
+                <div class="meta">
+                    <span>来源: Meta for Business</span>
+                    <a href="https://www.facebook.com/business" target="_blank" class="link">了解更多 →</a>
+                </div>
             </div>
+
             <div class="item">
                 <h3>TikTok Ads 电商功能扩展</h3>
                 <p>TikTok 广告平台推出新的电商广告格式，支持直播带货和短视频购物，为品牌提供更多变现渠道。</p>
-                <div class="meta">来源: TikTok for Business</div>
+                <div class="meta">
+                    <span>来源: TikTok for Business</span>
+                    <a href="https://www.tiktok.com/business" target="_blank" class="link">了解更多 →</a>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <div class="slide">
-        <div class="content" style="text-align: center;">
-            <h1>谢谢观看 👋</h1>
-            <div class="subtitle">明天见</div>
-        </div>
+        </section>
+        <footer>
+            <p>每日精选 AI 与 AdTech 资讯</p>
+        </footer>
     </div>
 </body>
 </html>
