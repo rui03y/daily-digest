@@ -7,106 +7,66 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            color: white;
         }
         .slide {
-            width: 100vw;
-            height: 100vh;
-            display: none;
+            min-height: 100vh;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            animation: fadeIn 0.8s ease-in;
+            padding: 80px 40px;
+            position: relative;
+            scroll-snap-align: start;
         }
-        .slide.active { display: flex; }
-        .slide-content { max-width: 1000px; width: 100%; }
-        h1 { font-size: 4em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        h2 { font-size: 2.5em; margin-bottom: 30px; }
-        .subtitle { font-size: 1.5em; opacity: 0.9; }
+        .slide:nth-child(odd) { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .slide:nth-child(even) { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .content { max-width: 1000px; width: 100%; animation: fadeIn 1s ease-in; }
+        h1 { font-size: 4em; margin-bottom: 30px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); }
+        h2 { font-size: 2.8em; margin-bottom: 25px; }
+        .subtitle { font-size: 1.8em; opacity: 0.9; margin-bottom: 20px; }
         .item { 
-            background: rgba(255,255,255,0.1); 
-            padding: 30px; 
-            margin: 20px 0; 
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15); 
+            padding: 35px; 
+            margin: 25px 0; 
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255,255,255,0.25);
+            transition: transform 0.3s;
         }
-        .item h3 { font-size: 1.8em; margin-bottom: 15px; }
-        .item p { font-size: 1.2em; line-height: 1.6; opacity: 0.95; }
-        .meta { font-size: 0.9em; margin-top: 10px; opacity: 0.7; }
-        .controls {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-        }
-        button {
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1em;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-        button:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
-        .page-num {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            color: white;
-            font-size: 1.2em;
-            opacity: 0.7;
-        }
+        .item:hover { transform: translateY(-5px); }
+        .item h3 { font-size: 2em; margin-bottom: 18px; }
+        .item p { font-size: 1.3em; line-height: 1.8; opacity: 0.95; }
+        .meta { font-size: 1em; margin-top: 15px; opacity: 0.8; }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 768px) {
             h1 { font-size: 2.5em; }
-            h2 { font-size: 1.8em; }
-            .slide { padding: 30px; }
+            h2 { font-size: 2em; }
+            .slide { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Slide 1: 封面 -->
-    <div class="slide active">
-        <div class="slide-content" style="text-align: center;">
+    <div class="slide">
+        <div class="content" style="text-align: center;">
             <h1>🚀 AI & AdTech 日报</h1>
-            <div class="subtitle">2026年3月22日</div>
+            <div class="subtitle">2026年3月22日 星期六</div>
         </div>
     </div>
 
-    <!-- Slide 2: AI 资讯标题 -->
     <div class="slide">
-        <div class="slide-content">
+        <div class="content">
             <h2>🤖 AI 资讯</h2>
-        </div>
-    </div>
-
-    <!-- Slide 3: Andrej Karpathy -->
-    <div class="slide">
-        <div class="slide-content">
             <div class="item">
                 <h3>Andrej Karpathy 播客问答</h3>
                 <p>前 Tesla AI 总监、OpenAI 创始团队成员 Andrej Karpathy 参加播客访谈，并在 Twitter 上开放问答环节，分享 AI 训练和深度学习的见解。</p>
                 <div class="meta">@karpathy · 2026-03-21 · 2K+ 点赞</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Slide 4: Swyx -->
-    <div class="slide">
-        <div class="slide-content">
             <div class="item">
                 <h3>Swyx 回顾 2023 年 AI 预测</h3>
                 <p>AI 领域知名博主 Swyx 回顾了 2.5 年前的演讲，认为 2023 年是他预测价值最高的一年，当时对 AI 发展趋势的判断非常准确。</p>
@@ -114,38 +74,19 @@
             </div>
         </div>
     </div>
-    <!-- Slide 5: AdTech 标题 -->
     <div class="slide">
-        <div class="slide-content">
+        <div class="content">
             <h2>📊 AdTech 资讯</h2>
-        </div>
-    </div>
-
-    <!-- Slide 6: Google Ads -->
-    <div class="slide">
-        <div class="slide-content">
             <div class="item">
                 <h3>Google Ads AI 优化持续升级</h3>
                 <p>Google Ads 继续推进 AI 驱动的广告优化功能，帮助广告主更精准地触达目标用户，提升投放效率。</p>
                 <div class="meta">来源: Google Ads 官方</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Slide 7: Meta -->
-    <div class="slide">
-        <div class="slide-content">
             <div class="item">
                 <h3>Meta 广告平台更新归因模型</h3>
                 <p>Meta 更新了跨设备归因追踪能力，帮助广告主更准确地衡量广告效果和 ROI。</p>
                 <div class="meta">来源: Meta for Business</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Slide 8: TikTok -->
-    <div class="slide">
-        <div class="slide-content">
             <div class="item">
                 <h3>TikTok Ads 电商功能扩展</h3>
                 <p>TikTok 广告平台推出新的电商广告格式，支持直播带货和短视频购物，为品牌提供更多变现渠道。</p>
@@ -153,41 +94,12 @@
             </div>
         </div>
     </div>
-    <!-- Slide 9: 结束 -->
+
     <div class="slide">
-        <div class="slide-content" style="text-align: center;">
+        <div class="content" style="text-align: center;">
             <h1>谢谢观看 👋</h1>
             <div class="subtitle">明天见</div>
         </div>
     </div>
-
-    <div class="page-num"><span id="current">1</span> / <span id="total">9</span></div>
-    
-    <div class="controls">
-        <button onclick="prevSlide()">← 上一页</button>
-        <button onclick="nextSlide()">下一页 →</button>
-    </div>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const total = slides.length;
-        document.getElementById('total').textContent = total;
-
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (n + total) % total;
-            slides[currentSlide].classList.add('active');
-            document.getElementById('current').textContent = currentSlide + 1;
-        }
-
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-        });
-    </script>
 </body>
 </html>
